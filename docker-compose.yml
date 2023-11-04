@@ -1,0 +1,25 @@
+version: '3'
+services:
+  web:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+
+  db:
+    image: mysql:8.2.0
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_DATABASE: 'db'
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+volumes:
+  mysql-data:
+
+
