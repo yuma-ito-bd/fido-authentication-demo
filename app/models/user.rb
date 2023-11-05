@@ -19,4 +19,17 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :passkey_authenticatable
+
+  has_many :passkeys
+
+  def self.passkey_class
+    Passkey
+  end
+
+  def self.find_for_passkey(passkey)
+    self.find_by(id: passkey.user_id)
+  end
+
+  def after_passkey_authentication(passkey:)
+  end
 end
