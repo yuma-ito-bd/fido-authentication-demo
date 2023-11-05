@@ -5,7 +5,7 @@ module RelyingParty
     WebAuthn::RelyingParty.new(
       # This value needs to match `window.location.origin` evaluated by
       # the User Agent during registration and authentication ceremonies.
-      origin: "http://localhost",
+      origin: "http://localhost:3000",
 
       # Relying Party name for display purposes
       name: "devise-webauthn-rails demo",
