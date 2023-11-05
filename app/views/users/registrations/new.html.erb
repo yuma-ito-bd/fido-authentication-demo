@@ -1,0 +1,22 @@
+<h2>Sign up</h2>
+
+<%= form_with(model: resource, as: resource_name, url: new_user_registration_challenge_path) do |f| %>
+  <%= render "users/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :label %><br />
+    <%= f.text_field :passkey_label, required: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "パスキーでサインアップ" %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>
