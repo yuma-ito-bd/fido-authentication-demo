@@ -8,10 +8,10 @@ FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 WORKDIR /rails
 
 # Set production environment
-ENV RAILS_ENV="production" \
-    BUNDLE_DEPLOYMENT="1" \
-    BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
+#ENV RAILS_ENV="production" \
+#    BUNDLE_DEPLOYMENT="1" \
+#    BUNDLE_PATH="/usr/local/bundle" \
+#    BUNDLE_WITHOUT="development"
 
 
 # Throw-away build stage to reduce size of final image
@@ -19,7 +19,7 @@ FROM base as build
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential default-libmysqlclient-dev git libvips pkg-config
+    apt-get install --no-install-recommends -y build-essential default-libmysqlclient-dev git libvips pkg-config make
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
