@@ -32,6 +32,11 @@ class User < ApplicationRecord
     self.find_by(id: passkey.user_id)
   end
 
-  def after_passkey_authentication(passkey:)
-  end
+  def after_passkey_authentication(passkey:) end
 end
+
+Devise.add_module :passkey_authenticatable,
+                  model: 'devise/passkeys/model',
+                  route: { session: [nil, :new, :create, :destroy] },
+                  controller: 'controller/sessions',
+                  strategy: true
