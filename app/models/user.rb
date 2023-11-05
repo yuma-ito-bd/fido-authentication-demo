@@ -20,9 +20,11 @@
 #
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :passkey_authenticatable
+         :recoverable, :rememberable, :passkey_authenticatable
 
   has_many :passkeys
+
+  validates :email, presence: true, uniqueness: true
 
   def self.passkey_class
     Passkey
