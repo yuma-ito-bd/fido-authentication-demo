@@ -12,7 +12,7 @@ if (signUpButton && supported()) {
         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         const form = e.target.closest('form');
         const formData = new FormData(form);
-        const url = form.action;
+        const url = form.dataset.newChallengeUrl;
         const options = await fetch(url, {
             method: 'POST',
             headers: {
@@ -25,6 +25,7 @@ if (signUpButton && supported()) {
         const credential = await create({publicKey: options});
 
         // クレデンシャルをサーバーに送信
-
+        form.elements['user_passkey_credential'].value = JSON.stringify(credential);
+        form.submit();
     });
 }

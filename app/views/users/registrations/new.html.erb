@@ -1,6 +1,6 @@
 <h2>Sign up</h2>
 
-<%= form_with(model: resource, as: resource_name, url: new_user_registration_challenge_path) do |f| %>
+<%= form_with(model: resource, as: resource_name, url: registration_path(resource_name), data: { new_challenge_url: new_user_registration_challenge_path}) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
 
   <div class="field">
@@ -13,6 +13,8 @@
     <%= f.label :label %><br />
     <%= f.text_field :passkey_label, required: true %>
   </div>
+
+  <%= f.hidden_field :passkey_credential %>
 
   <div class="actions">
     <%= f.submit "パスキーでサインアップ", id: 'sign-up-button' %>
