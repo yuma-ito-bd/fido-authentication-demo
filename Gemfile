@@ -46,6 +46,7 @@ gem "bootsnap", require: false
 
 # 認証
 gem "devise", "~> 4.9"
+gem 'devise-passkeys'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
