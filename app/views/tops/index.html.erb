@@ -1,3 +1,9 @@
 <h2>Hello <%= current_user.email %>!</h2>
 
+<ul>
+  <% @passkeys.each do |passkey| %>
+    <li><%= passkey.label %>: 最終使用日時(<%= passkey.last_used_at.strftime('%Y/%m/%d %H:%M') %>)</li>
+  <% end %>
+</ul>
+
 <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
