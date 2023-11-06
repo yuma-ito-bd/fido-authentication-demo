@@ -1,0 +1,19 @@
+<h2>Log in</h2>
+
+<%= form_with(model: resource, as: resource_name, url: session_path(resource_name),
+              data: { new_challenge_url: new_user_session_challenge_path }) do |f| %>
+  <%= render "users/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br/>
+    <%= f.email_field :email, autofocus: true, required: true, autocomplete: "email" %>
+  </div>
+
+  <%= f.hidden_field :passkey_credential %>
+
+  <div class="actions">
+    <%= f.submit "パスキーでログイン", id: 'sign-in-button' %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>

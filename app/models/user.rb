@@ -26,7 +26,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
 
-  def self.passkey_class
+  def self.passkeys_class
     Passkey
   end
 
