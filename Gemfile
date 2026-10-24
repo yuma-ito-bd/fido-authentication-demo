@@ -45,7 +45,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # 認証
-gem "devise", "~> 4.9"
+gem "devise", "~> 5.0"
 gem 'devise-passkeys'
 
 group :development, :test do
